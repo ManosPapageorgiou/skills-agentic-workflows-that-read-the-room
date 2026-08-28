@@ -24,7 +24,6 @@ network:
 safe-outputs:
   create-pull-request:
     draft: true
-    max: 1
     title-prefix: "[mona] "
     fallback-as-issue: false
 ---
