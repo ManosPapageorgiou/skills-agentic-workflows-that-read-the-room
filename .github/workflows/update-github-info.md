@@ -9,7 +9,7 @@ permissions:
   contents: read
   pull-requests: read
 
-model: gpt-4o
+model: gpt-5.6
 
 tools:
   edit:
