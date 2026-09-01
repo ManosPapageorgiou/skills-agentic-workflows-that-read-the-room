@@ -1,7 +1,7 @@
 ---
 name: update-github-info
 description: Draft website updates for Mona's GitHub Info site from official GitHub sources.
-model: any
+model: Claude Opus 4.7 (copilot)
 on:
   schedule: daily
   workflow_dispatch:
