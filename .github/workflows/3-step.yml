@@ -126,7 +126,7 @@ jobs:
           echo "No open pull request updates site/content/github-info.md"
           exit 1
         env:
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check generated PR includes source context
         id: check-pr-sources
@@ -138,7 +138,7 @@ jobs:
             gh pr diff "${{ steps.find-generated-pr.outputs.pr_number }}"
           } | grep -Eiq 'GitHub Blog|GitHub Changelog|github\.blog|awesome-copilot\.github\.com'
         env:
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update comment - step results
         uses: GrantBirki/comment@v2.1.1
@@ -204,7 +204,7 @@ jobs:
       - name: Disable current workflow
         run: gh workflow disable "${{github.workflow}}"
         env:
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   finish_exercise:
     name: Finish Exercise
@@ -225,7 +225,7 @@ jobs:
     steps:
       - name: Disable update-github-info workflow after issue closure
         env:
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           issue_state="$(gh issue view "$ISSUE_NUMBER" --repo "$ISSUE_REPOSITORY" --json state --jq .state)"
           if [ "$issue_state" != "CLOSED" ]; then

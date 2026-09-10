@@ -167,4 +167,4 @@ jobs:
           gh workflow disable "${{github.workflow}}"
           gh workflow enable "Step 2"
         env:
-          GH_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
